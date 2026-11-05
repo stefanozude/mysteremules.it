@@ -923,6 +923,54 @@ a.press-thumb{cursor:pointer}
     {id:'verde',label:'Verde',hex:'#00471B',img:'img/felpa-cappuccio-v2.jpg'},
     {id:'nero',label:'Nero',hex:'#111111',img:'img/felpa-cappuccio-nero-v2.jpg'}
   ];
+  var ACCAP = [
+    {id:'white',label:'Bianco',hex:'#FFFFFF',img:'img/accappatoio-white.jpg'},
+    {id:'ivory',label:'Avorio',hex:'#F3EAD3',img:'img/accappatoio-ivory.jpg'},
+    {id:'light-grey',label:'Grigio chiaro',hex:'#C9CACC',img:'img/accappatoio-light-grey.jpg'},
+    {id:'cappuccino',label:'Cappuccino',hex:'#9C8C80',img:'img/accappatoio-cappuccino.jpg'},
+    {id:'anthracite',label:'Antracite',hex:'#4A4A4D',img:'img/accappatoio-anthracite.jpg'},
+    {id:'graphite',label:'Grafite',hex:'#2E3035',img:'img/accappatoio-graphite.jpg'},
+    {id:'black',label:'Nero',hex:'#141414',img:'img/accappatoio-black.jpg'},
+    {id:'sand',label:'Sabbia',hex:'#D9C7A8',img:'img/accappatoio-sand.jpg'},
+    {id:'bright-orange',label:'Arancione',hex:'#F05A22',img:'img/accappatoio-bright-orange.jpg'},
+    {id:'fire-red',label:'Rosso',hex:'#C8102E',img:'img/accappatoio-fire-red.jpg'},
+    {id:'burgundy',label:'Bordeaux',hex:'#5E1A24',img:'img/accappatoio-burgundy.jpg'},
+    {id:'blossom-pink',label:'Rosa cipria',hex:'#F2C7C2',img:'img/accappatoio-blossom-pink.jpg'},
+    {id:'old-pink',label:'Rosa antico',hex:'#C9938A',img:'img/accappatoio-old-pink.jpg'},
+    {id:'purple',label:'Viola',hex:'#3B1F6E',img:'img/accappatoio-purple.jpg'},
+    {id:'pacific-blue',label:'Azzurro',hex:'#8FB7DF',img:'img/accappatoio-pacific-blue.jpg'},
+    {id:'aqua-blue',label:'Turchese',hex:'#1F8FD1',img:'img/accappatoio-aqua-blue.jpg'},
+    {id:'jeans-blue',label:'Blu jeans',hex:'#5E86AE',img:'img/accappatoio-jeans-blue.jpg'},
+    {id:'deep-blue',label:'Blu intenso',hex:'#1F5C99',img:'img/accappatoio-deep-blue.jpg'},
+    {id:'true-blue',label:'Blu royal',hex:'#1E2F7A',img:'img/accappatoio-true-blue.jpg'},
+    {id:'french-navy',label:'Blu navy',hex:'#1C2340',img:'img/accappatoio-french-navy.jpg'},
+    {id:'lime-green',label:'Verde lime',hex:'#9CC63B',img:'img/accappatoio-lime-green.jpg'},
+    {id:'old-green',label:'Verde salvia',hex:'#6E7D6A',img:'img/accappatoio-old-green.jpg'},
+    {id:'irish-green',label:'Verde smeraldo',hex:'#0E6B5C',img:'img/accappatoio-irish-green.jpg'},
+    {id:'dark-green',label:'Verde scuro',hex:'#0F3D2E',img:'img/accappatoio-dark-green.jpg'}
+  ];
+  var TELI = [
+    {id:'white',label:'Bianco',hex:'#FFFFFF',img:'img/asciugamano-white.jpg'},
+    {id:'light-grey',label:'Grigio chiaro',hex:'#C9CACC',img:'img/asciugamano-light-grey.jpg'},
+    {id:'anthracite',label:'Antracite',hex:'#4A4A4D',img:'img/asciugamano-anthracite.jpg'},
+    {id:'graphite',label:'Grafite',hex:'#2E3035',img:'img/asciugamano-graphite.jpg'},
+    {id:'black',label:'Nero',hex:'#141414',img:'img/asciugamano-black.jpg'},
+    {id:'sand',label:'Sabbia',hex:'#D9C7A8',img:'img/asciugamano-sand.jpg'},
+    {id:'bright-yellow',label:'Giallo',hex:'#F4D920',img:'img/asciugamano-bright-yellow.jpg'},
+    {id:'bright-orange',label:'Arancione',hex:'#F05A22',img:'img/asciugamano-bright-orange.jpg'},
+    {id:'fire-red',label:'Rosso',hex:'#C8102E',img:'img/asciugamano-fire-red.jpg'},
+    {id:'light-pink',label:'Rosa chiaro',hex:'#F2C3D2',img:'img/asciugamano-light-pink.jpg'},
+    {id:'pink',label:'Pink',hex:'#E8579A',img:'img/asciugamano-pink.jpg'},
+    {id:'light-purple',label:'Lilla',hex:'#B9A5D3',img:'img/asciugamano-light-purple.jpg'},
+    {id:'purple',label:'Viola',hex:'#4B2A7B',img:'img/asciugamano-purple.jpg'},
+    {id:'light-blue',label:'Azzurro',hex:'#A8C8E8',img:'img/asciugamano-light-blue.jpg'},
+    {id:'aqua-blue',label:'Turchese',hex:'#1F8FD1',img:'img/asciugamano-aqua-blue.jpg'},
+    {id:'true-blue',label:'Blu royal',hex:'#1E2F7A',img:'img/asciugamano-true-blue.jpg'},
+    {id:'french-navy',label:'Blu navy',hex:'#1C2340',img:'img/asciugamano-french-navy.jpg'},
+    {id:'lime-green',label:'Verde lime',hex:'#9CC63B',img:'img/asciugamano-lime-green.jpg'},
+    {id:'irish-green',label:'Verde smeraldo',hex:'#0E6B5C',img:'img/asciugamano-irish-green.jpg'},
+    {id:'dark-green',label:'Verde scuro',hex:'#0F3D2E',img:'img/asciugamano-dark-green.jpg'}
+  ];
   var PRODUCTS = [
     {id:'felpa',cat:'abb',name:'Felpa con cappuccio',desc:'Scritta MYSTERE e logo davanti, numero sulla manica destra, cuore “Io tifo Sveva” sulla manica sinistra.',price:33,custom:true,sized:true,colors:FELPA},
     {id:'zip',cat:'abb',name:'Felpa con zip',desc:'Con cappuccio, logo sul petto.',price:38,sized:true,colors:[
@@ -932,8 +980,10 @@ a.press-thumb{cursor:pointer}
     {id:'pant',cat:'abb',name:'Pantaloni tuta',desc:'Neri, logo e scritta MYSTERE MULES sulla gamba.',price:50,sized:true,img:'img/pantaloni.jpg'},
     {id:'zaino',cat:'acc',name:'Zaino Erreà',desc:'Nero, logo e scritta MYSTERE MULES Basketball Lugo, numero sul fondo.',price:27,custom:true,img:'img/zaino.jpg'},
     {id:'portascarpe',cat:'acc',name:'Portascarpe',desc:'Nero con profili grigi e manico, logo Mystere Mules sul coperchio e numero sul lato.',price:null,custom:true,img:'img/portascarpe.jpg'},
+    {id:'asciugamano',cat:'acc',name:'Asciugamani',desc:'Spugna 100% cotone, logo ricamato sulla bordura. Cinque misure: ospite, viso, sport, bagno e telo grande.',price:null,sized:true,sizeLabel:'Misura',sizes:['Ospite 30×50','Viso 50×100','Sport 30×140','Bagno 70×140','Telo grande 100×210'],sizeDefault:'Bagno 70×140',colors:TELI,defColor:'dark-green'},
     {id:'polo',cat:'abb',name:'Polo',desc:'Nera, logo sul petto.',price:null,sized:true,img:'img/polo-v2.jpg'},
     {id:'gilet',cat:'abb',name:'Gilet piumino',desc:'Nero con cappuccio, logo sul petto.',price:null,sized:true,img:'img/gilet.jpg'},
+    {id:'accappatoio',cat:'abb',name:'Accappatoio',desc:'Spugna 100% cotone con collo a scialle e cintura, logo ricamato sul petto. Taglie da XXS a 4XL (alcune solo in certi colori).',price:null,sized:true,sizes:['XXS','XS','S/M','L/XL','XXL','3XL','4XL'],sizeDefault:'L/XL',colors:ACCAP,defColor:'graphite'},
     {id:'berretto',cat:'acc',name:'Berretto',desc:'Nero, logo Mystere Mules.',price:null,img:'img/berretto.jpg'}
   ];
   // Dati modificabili dal sito (area riservata): risultati e roster, salvati nel blocco #site-data
@@ -991,7 +1041,7 @@ a.press-thumb{cursor:pointer}
   var CATS = {abb:'Abbigliamento',acc:'Accessori'};
   var TITLES = {all:'La collezione',abb:'Abbigliamento',acc:'Accessori'};
   var state = {cat:'all', color:{tee:'nero', felpa:'verde'}, cart:[]};
-  function curColor(p){ return p.colors.filter(function(c){return c.id===state.color[p.id];})[0] || p.colors[0]; }
+  function curColor(p){ var id = state.color[p.id] || p.defColor; return p.colors.filter(function(c){return c.id===id;})[0] || p.colors[0]; }
 
   function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function eur(n){return n.toFixed(2).replace('.',',')+' €';}
@@ -1617,7 +1667,8 @@ a.press-thumb{cursor:pointer}
     var badge = p.custom ? '<span class="badge">Personalizzabile</span>' : '';
     var opts = '';
     if (p.sized) {
-      opts += '<div class="field"><label for="size-'+p.id+'">Taglia</label><select id="size-'+p.id+'">'+(BIG[p.id]?SIZES:SIZES.slice(0,5)).map(function(s){return '<option'+(s==='L'?' selected':'')+'>'+s+'</option>';}).join('')+'</select></div>';
+      var sl = p.sizes || (BIG[p.id]?SIZES:SIZES.slice(0,5)), sd = p.sizeDefault || 'L';
+      opts += '<div class="field"><label for="size-'+p.id+'">'+(p.sizeLabel||'Taglia')+'</label><select id="size-'+p.id+'">'+sl.map(function(s){return '<option'+(s===sd?' selected':'')+'>'+s+'</option>';}).join('')+'</select></div>';
     }
     if (p.custom) {
       opts += '<div class="field"><label for="num-'+p.id+'">Numero</label><input id="num-'+p.id+'" type="text" inputmode="numeric" maxlength="2" placeholder="23"></div>';
@@ -1653,7 +1704,7 @@ a.press-thumb{cursor:pointer}
     if (add) {
       var p = PRODUCTS.filter(function(x){return x.id===add.dataset.add;})[0];
       var item = {name:p.name, price:p.price, details:[]};
-      if (p.sized) item.details.push('Taglia '+document.getElementById('size-'+p.id).value);
+      if (p.sized) item.details.push((p.sizeLabel||'Taglia')+' '+document.getElementById('size-'+p.id).value);
       else item.details.push('Taglia unica');
       if (p.colors) item.details.push('Colore '+curColor(p).label.toLowerCase());
       if (p.custom) { var n=document.getElementById('num-'+p.id).value.trim(); item.details.push(n?('Numero '+n):'Numero da indicare'); }
