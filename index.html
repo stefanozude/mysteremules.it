@@ -131,6 +131,12 @@ header.nav .wrap{display:flex;align-items:center;gap:12px 28px;padding-block:10p
 .next dt{color:#B5B1AA;text-transform:uppercase;font-size:12px;letter-spacing:.12em;align-self:center}
 .next dd{margin:0}
 .news{display:flex;flex-direction:column;gap:16px}
+.more-news{margin-top:16px;width:100%}
+.archive{min-height:70vh}
+.back-link{display:inline-flex;align-items:center;min-height:44px;margin-bottom:12px;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--green);text-decoration:none}
+.back-link:hover{color:var(--red)}
+.archive-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));gap:20px 40px;margin-top:8px}
+body.archive-mode main > section:not(#notizie), body.archive-mode main > div{display:none !important}
 .news-item{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .news-item .thumb{aspect-ratio:4/3;max-width:100%;display:flex;align-items:center;justify-content:center;font-size:12px;text-align:center;padding:6px}
 .news-item small{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
@@ -611,6 +617,13 @@ a.press-thumb{cursor:pointer}
 </header>
 
 <main>
+<section id="notizie" class="sec archive" aria-labelledby="t-archive" hidden>
+  <div class="wrap">
+    <a class="back-link" href="#home">← Torna al sito</a>
+    <div class="sec-head"><div><span class="eyebrow">Archivio</span><h2 id="t-archive">Tutte le notizie</h2></div></div>
+    <div id="archive-list" class="archive-grid"></div>
+  </div>
+</section>
 <section id="home" class="hero">
   <div class="hero-bg" role="img" aria-label="Giocatori dei Mystere Mules in maglia nera"></div>
   <div class="wrap">
@@ -670,6 +683,7 @@ a.press-thumb{cursor:pointer}
       <div class="side-news">
         <h3>Altre notizie</h3>
         <div id="news-side" style="display:flex;flex-direction:column;gap:16px"></div>
+        <a class="btn outline more-news" id="more-news" href="#notizie" hidden>Mostra altre notizie</a>
       </div>
       </div>
       <div class="news">
@@ -1342,6 +1356,16 @@ a.press-thumb{cursor:pointer}
   })();
 
   // notizie
+  var NEWS_SIDE = 6; // notizie in "Altre notizie"; le altre stanno nella pagina #notizie
+  function route(){
+    var on = location.hash==='#notizie', arch=document.getElementById('notizie');
+    var was = document.body.classList.contains('archive-mode');
+    document.body.classList.toggle('archive-mode', on); arch.hidden = !on;
+    if (on) { window.scrollTo({top:0,behavior:'instant'}); document.title = 'Notizie · Mystere Mules Basketball Lugo'; }
+    else if (was) { document.title = BASE_TITLE; var t = location.hash && document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView({behavior:'instant'}); else window.scrollTo({top:0,behavior:'instant'}); }
+  }
+  var BASE_TITLE = document.title;
+  window.addEventListener('hashchange', route);
   function renderNews(){
     var list = editing ? draft.news : DATA.news;
     var box = document.getElementById('news-list');
@@ -1367,8 +1391,10 @@ a.press-thumb{cursor:pointer}
       var link = n.link ? ' <a href="'+esc(n.link)+'">'+esc(n.linkText||'Leggi')+'</a>.' : '';
       return '<article class="news-item">'+th+'<div><small>'+esc(n.tag||'')+'</small><h3>'+esc(n.title||'')+'</h3><p>'+esc(n.text||'')+link+'</p></div></article>';
     }
-    var main='', other='';
-    (list||[]).forEach(function(n,i){ if (n.type==='match' && !main) main=item(n,i); else other+=item(n,i,true); });
+    var main='', other='', nOther=0, all='';
+    (list||[]).forEach(function(n,i){ all+=item(n,i,true); if (n.type==='match' && !main) main=item(n,i); else { nOther++; if (nOther<=NEWS_SIDE) other+=item(n,i,true); } });
+    document.getElementById('archive-list').innerHTML = all;
+    document.getElementById('more-news').hidden = !main || nOther<=NEWS_SIDE;
     box.innerHTML = main || other;
     side.innerHTML = main ? other : '';
     side.parentNode.hidden = !main || !other;
@@ -1539,6 +1565,7 @@ a.press-thumb{cursor:pointer}
   renderSocial();
   renderSponsors();
   renderNews();
+  route();
   renderNextGraphic();
   renderAbout();
   renderPress();
