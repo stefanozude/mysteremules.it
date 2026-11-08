@@ -71,7 +71,7 @@ section h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(3
 header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
 header.nav .wrap{display:flex;align-items:center;gap:12px 28px;padding-block:10px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.brand img{height:52px;width:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28))}
+.brand img{height:52px;width:auto}
 .brand .n{font-family:var(--display);font-weight:800;font-size:26px;line-height:1;color:var(--green)}
 .brand .s{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.32em;color:var(--ink);margin-top:3px;display:block}
 .menu{display:flex;gap:2px;margin-left:auto;overflow-x:auto;max-width:100%;scrollbar-width:none}
@@ -598,7 +598,7 @@ a.press-thumb{cursor:pointer}
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Mystere Mules, torna all'inizio">
-      <img src="img/logo-nav-v2.png" alt="">
+      <img src="img/logo-nav.png" alt="">
       <span><span class="n">MYSTERE MULES</span><span class="s">BASKETBALL LUGO</span></span>
     </a>
     <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu"><span class="bars" aria-hidden="true"></span><span class="mt-label">Menu</span></button>
@@ -949,24 +949,25 @@ a.press-thumb{cursor:pointer}
     {id:'dark-green',label:'Verde scuro',hex:'#0F3D2E',img:'img/asciugamano-v2-dark-green.jpg'}
   ];
   var PRODUCTS = [
-    {id:'felpa',cat:'abb',name:'Felpa con cappuccio',desc:'Scritta MYSTERE e logo davanti, numero sulla manica destra, cuore “Io tifo Sveva” sulla manica sinistra.',price:33,custom:true,sized:true,colors:FELPA},
-    {id:'zip',cat:'abb',name:'Felpa con zip',desc:'Con cappuccio, logo sul petto.',price:38,sized:true,colors:[
+    {id:'felpa',cat:'abb',name:'Felpa con cappuccio',desc:'Scritta MYSTERE e logo davanti, numero sulla manica destra, cuore “Io tifo Sveva” sulla manica sinistra.',custom:true,sized:true,colors:FELPA},
+    {id:'zip',cat:'abb',name:'Felpa con zip',desc:'Con cappuccio, logo sul petto.',sized:true,colors:[
       {id:'verde',label:'Verde',hex:'#00471B',img:'img/felpa-zip-v2.jpg'},
       {id:'nero',label:'Nero',hex:'#111111',img:'img/felpa-zip-nero-v2.jpg'}]},
-    {id:'tee',cat:'abb',name:'T-shirt Mystere',desc:'Grafica MYSTERE davanti, logo piccolo sul retro.',price:12,sized:true,colors:TEE},
-    {id:'pant',cat:'abb',name:'Pantaloni tuta',desc:'Logo sulla tasca e scritta MYSTERE MULES sulla gamba. Taglie dalla S alla 3XL.',price:50,sized:true,sizes:['S','M','L','XL','XXL','3XL'],colors:[
+    {id:'natale',cat:'abb',name:'Maglione di Natale',desc:'Edizione natalizia in maglia rossa con logo Mystere Mules, renne, alberi e fiocchi di neve.',noOrder:true,img:'img/maglione-natale.jpg'},
+    {id:'tee',cat:'abb',name:'T-shirt Mystere',desc:'Grafica MYSTERE davanti, logo piccolo sul retro. Taglie dalla S alla 5XL.',sized:true,sizes:['S','M','L','XL','XXL','3XL','4XL','5XL'],colors:TEE},
+    {id:'pant',cat:'abb',name:'Pantaloni tuta',desc:'Logo sulla tasca e scritta MYSTERE MULES sulla gamba. Taglie dalla S alla 3XL.',sized:true,sizes:['S','M','L','XL','XXL','3XL'],colors:[
       {id:'nero',label:'Nero',hex:'#141414',img:'img/pantaloni-nero.jpg'},
       {id:'verde',label:'Verde',hex:'#348A46',img:'img/pantaloni-verde-v2.jpg'}
     ]},
-    {id:'zaino',cat:'acc',name:'Zaino Erreà',desc:'Nero, logo e scritta MYSTERE MULES Basketball Lugo, numero sul fondo.',price:27,custom:true,img:'img/zaino.jpg'},
-    {id:'portascarpe',cat:'acc',name:'Portascarpe',desc:'Nero con profili grigi e manico, logo Mystere Mules sul coperchio e numero sul lato.',price:null,custom:true,img:'img/portascarpe.jpg'},
-    {id:'asciugamano',cat:'acc',name:'Asciugamani',desc:'Spugna 100% cotone, logo ricamato sulla bordura. Cinque misure: ospite, viso, sport, bagno e telo grande.',price:null,sized:true,sizeLabel:'Misura',sizes:['Ospite 30×50','Viso 50×100','Sport 30×140','Bagno 70×140','Telo grande 100×210'],sizeDefault:'Bagno 70×140',colors:TELI,defColor:'black'},
-    {id:'polo',cat:'abb',name:'Polo',desc:'Nera, logo sul petto.',price:null,sized:true,img:'img/polo-v2.jpg'},
-    {id:'gilet',cat:'abb',name:'Gilet piumino',desc:'Nero con cappuccio, logo sul petto.',price:null,sized:true,img:'img/gilet.jpg'},
-    {id:'softshell',cat:'abb',name:'Giubbotto soft shell',desc:'Nero con cappuccio e zip grigie, logo ricamato sul petto. Taglie dalla M alla 3XL.',price:null,sized:true,sizes:['M','L','XL','XXL','3XL'],img:'img/softshell.jpg'},
-    {id:'accappatoio',cat:'abb',name:'Accappatoio',desc:'Spugna 100% cotone con collo a scialle e cintura, logo ricamato. Taglie da XS a 4XL (4XL solo nero).',price:null,sized:true,sizes:['XS','S/M','L/XL','XXL','3XL','4XL'],sizeDefault:'L/XL',colors:ACCAP,defColor:'black'},
-    {id:'berretto',cat:'acc',name:'Berretto',desc:'Nero, logo Mystere Mules.',price:null,img:'img/berretto.jpg'},
-    {id:'cappellino',cat:'acc',name:'Cappellino',desc:'Nero con visiera bordata di bianco, logo ricamato davanti. Taglia unica.',price:null,img:'img/cappellino.jpg'}
+    {id:'zaino',cat:'acc',name:'Zaino Erreà',desc:'Nero, logo e scritta MYSTERE MULES Basketball Lugo, numero sul fondo.',custom:true,img:'img/zaino.jpg'},
+    {id:'portascarpe',cat:'acc',name:'Portascarpe',desc:'Nero con profili grigi e manico, logo Mystere Mules sul coperchio e numero sul lato.',custom:true,img:'img/portascarpe.jpg'},
+    {id:'asciugamano',cat:'acc',name:'Asciugamani',desc:'Spugna 100% cotone, logo ricamato sulla bordura. Cinque misure: ospite, viso, sport, bagno e telo grande.',sized:true,sizeLabel:'Misura',sizes:['Ospite 30×50','Viso 50×100','Sport 30×140','Bagno 70×140','Telo grande 100×210'],sizeDefault:'Bagno 70×140',colors:TELI,defColor:'black'},
+    {id:'polo',cat:'abb',name:'Polo',desc:'Nera, logo sul petto.',sized:true,img:'img/polo-v2.jpg'},
+    {id:'gilet',cat:'abb',name:'Gilet piumino smanicato',desc:'Nero con cappuccio, logo sul petto. Taglie dalla S alla 3XL.',sized:true,sizes:['S','M','L','XL','XXL','3XL'],img:'img/gilet.jpg'},
+    {id:'softshell',cat:'abb',name:'Giubbotto soft shell',desc:'Nero con cappuccio e zip grigie, logo ricamato sul petto. Taglie dalla M alla 3XL.',sized:true,sizes:['M','L','XL','XXL','3XL'],img:'img/softshell.jpg'},
+    {id:'accappatoio',cat:'abb',name:'Accappatoio',desc:'Spugna 100% cotone con collo a scialle e cintura, logo ricamato. Taglie da XS a 4XL (4XL solo nero).',sized:true,sizes:['XS','S/M','L/XL','XXL','3XL','4XL'],sizeDefault:'L/XL',colors:ACCAP,defColor:'black'},
+    {id:'berretto',cat:'acc',name:'Berretto',desc:'Nero, logo Mystere Mules.',img:'img/berretto.jpg'},
+    {id:'cappellino',cat:'acc',name:'Cappellino',desc:'Nero con visiera bordata di bianco, logo ricamato davanti. Taglia unica.',img:'img/cappellino.jpg'}
   ];
   // Dati modificabili dal sito (area riservata): risultati e roster, salvati nel blocco #site-data
   var DEFAULT_SPONSORS = [
@@ -1659,7 +1660,7 @@ a.press-thumb{cursor:pointer}
   // store
   function card(p){
     var img = p.colors ? curColor(p).img : p.img;
-    var badge = p.custom ? '<span class="badge">Personalizzabile</span>' : '';
+    var badge = p.noOrder ? '<span class="badge soon">Non ordinabile</span>' : (p.custom ? '<span class="badge">Personalizzabile</span>' : '');
     var opts = '';
     if (p.sized) {
       var sl = p.sizes || (BIG[p.id]?SIZES:SIZES.slice(0,5)), sd = p.sizeDefault || 'L';
@@ -1674,9 +1675,9 @@ a.press-thumb{cursor:pointer}
       sw = '<div class="field"><span style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Colore: '+cur.label+'</span><div class="swatches">'+
         p.colors.map(function(c){return '<button type="button" class="sw" data-color="'+p.id+':'+c.id+'" aria-label="'+c.label+'" aria-pressed="'+(c.id===cur.id)+'"><span style="background:'+c.hex+'"></span></button>';}).join('')+'</div></div>';
     }
-    var size = p.sized ? '' : '<span style="font-size:13px;color:var(--muted)">Taglia unica</span>';
+    var size = (p.sized || p.noOrder) ? '' : '<span style="font-size:13px;color:var(--muted)">Taglia unica</span>';
     var price = '';
-    var btn = '<button type="button" class="btn add" data-add="'+p.id+'">Aggiungi alla richiesta</button>';
+    var btn = p.noOrder ? '<span class="btn" aria-disabled="true" style="background:var(--line);color:var(--muted);cursor:default">Non ordinabile</span>' : '<button type="button" class="btn add" data-add="'+p.id+'">Aggiungi alla richiesta</button>';
     return '<article class="card"><div class="ph"><img src="'+img+'" alt="'+esc(p.name)+'">'+badge+'</div>'+
       '<span class="cat">'+CATS[p.cat]+'</span><h3>'+esc(p.name)+'</h3><p class="desc">'+esc(p.desc)+'</p>'+
       sw+size+price+(opts?'<div class="opts">'+opts+'</div>':'')+btn+'</article>';
@@ -1698,7 +1699,7 @@ a.press-thumb{cursor:pointer}
     var add = e.target.closest('[data-add]');
     if (add) {
       var p = PRODUCTS.filter(function(x){return x.id===add.dataset.add;})[0];
-      var item = {name:p.name, price:p.price, details:[]};
+      var item = {name:p.name, details:[]};
       if (p.sized) item.details.push((p.sizeLabel||'Taglia')+' '+document.getElementById('size-'+p.id).value);
       else item.details.push('Taglia unica');
       if (p.colors) item.details.push('Colore '+curColor(p).label.toLowerCase());
