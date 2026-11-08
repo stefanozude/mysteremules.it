@@ -953,6 +953,7 @@ a.press-thumb{cursor:pointer}
     {id:'zip',cat:'abb',name:'Felpa con zip',desc:'Con cappuccio, logo sul petto.',sized:true,colors:[
       {id:'verde',label:'Verde',hex:'#00471B',img:'img/felpa-zip-v2.jpg'},
       {id:'nero',label:'Nero',hex:'#111111',img:'img/felpa-zip-nero-v2.jpg'}]},
+    {id:'natale',cat:'abb',name:'Maglione di Natale',desc:'Edizione natalizia in maglia rossa con logo Mystere Mules, renne, alberi e fiocchi di neve.',noOrder:true,img:'img/maglione-natale.jpg'},
     {id:'tee',cat:'abb',name:'T-shirt Mystere',desc:'Grafica MYSTERE davanti, logo piccolo sul retro.',sized:true,colors:TEE},
     {id:'pant',cat:'abb',name:'Pantaloni tuta',desc:'Logo sulla tasca e scritta MYSTERE MULES sulla gamba. Taglie dalla S alla 3XL.',sized:true,sizes:['S','M','L','XL','XXL','3XL'],colors:[
       {id:'nero',label:'Nero',hex:'#141414',img:'img/pantaloni-nero.jpg'},
@@ -1659,7 +1660,7 @@ a.press-thumb{cursor:pointer}
   // store
   function card(p){
     var img = p.colors ? curColor(p).img : p.img;
-    var badge = p.custom ? '<span class="badge">Personalizzabile</span>' : '';
+    var badge = p.noOrder ? '<span class="badge soon">Non ordinabile</span>' : (p.custom ? '<span class="badge">Personalizzabile</span>' : '');
     var opts = '';
     if (p.sized) {
       var sl = p.sizes || (BIG[p.id]?SIZES:SIZES.slice(0,5)), sd = p.sizeDefault || 'L';
@@ -1674,9 +1675,9 @@ a.press-thumb{cursor:pointer}
       sw = '<div class="field"><span style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Colore: '+cur.label+'</span><div class="swatches">'+
         p.colors.map(function(c){return '<button type="button" class="sw" data-color="'+p.id+':'+c.id+'" aria-label="'+c.label+'" aria-pressed="'+(c.id===cur.id)+'"><span style="background:'+c.hex+'"></span></button>';}).join('')+'</div></div>';
     }
-    var size = p.sized ? '' : '<span style="font-size:13px;color:var(--muted)">Taglia unica</span>';
+    var size = (p.sized || p.noOrder) ? '' : '<span style="font-size:13px;color:var(--muted)">Taglia unica</span>';
     var price = '';
-    var btn = '<button type="button" class="btn add" data-add="'+p.id+'">Aggiungi alla richiesta</button>';
+    var btn = p.noOrder ? '<span class="btn" aria-disabled="true" style="background:var(--line);color:var(--muted);cursor:default">Non ordinabile</span>' : '<button type="button" class="btn add" data-add="'+p.id+'">Aggiungi alla richiesta</button>';
     return '<article class="card"><div class="ph"><img src="'+img+'" alt="'+esc(p.name)+'">'+badge+'</div>'+
       '<span class="cat">'+CATS[p.cat]+'</span><h3>'+esc(p.name)+'</h3><p class="desc">'+esc(p.desc)+'</p>'+
       sw+size+price+(opts?'<div class="opts">'+opts+'</div>':'')+btn+'</article>';
