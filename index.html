@@ -392,13 +392,18 @@ body.is-editing{padding-bottom:140px}
 .story-h:first-child{margin-top:0;padding-top:0;border-top:0}
 .sh-y{display:inline-block;background:var(--red);color:var(--white);font-size:.62em;letter-spacing:.06em;padding:5px 10px 4px;transform:translateY(-.12em)}
 .story-q{margin:6px 0;padding:6px 0 6px 22px;border-left:6px solid var(--red);font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,30px);line-height:1.15;color:var(--white);max-width:40ch}
-.story-logo{margin:8px 0;max-width:820px;display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:28px;align-items:center;background:var(--black);border-top:6px solid var(--red);padding:24px 28px}
-.story-logo img{width:100%;height:auto;display:block}
-.sl-k{display:block;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);margin-bottom:10px}
-.story-logo ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
-.story-logo li{display:flex;flex-direction:column;gap:2px;font-size:16px;line-height:1.45;color:#D8D4CE}
-.story-logo li b{font-family:var(--display);font-weight:800;font-size:24px;line-height:1;text-transform:uppercase;color:var(--white)}
-@media (max-width:560px){.story-logo{grid-template-columns:1fr;justify-items:start;padding:20px}.story-logo img{width:150px}}
+.story-logo{margin:8px 0;max-width:900px;display:grid;grid-template-columns:minmax(160px,280px) 1fr;gap:32px;align-items:center;background:var(--black);border-top:6px solid var(--red);padding:28px}
+.sl-fig{position:relative;margin:0 26px}
+.sl-ln{position:absolute;height:0;border-top:1.5px solid rgba(255,255,255,.85)}
+.sl-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--white);border:2px solid var(--ink);transform:translate(-50%,-50%)}
+.sl-fig img{width:100%;height:auto;display:block}
+.sl-pt{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:var(--white);color:var(--ink);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:16px;line-height:1;box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.sl-k{display:block;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);margin-bottom:12px}
+.story-logo ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.story-logo li{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;font-size:16px;line-height:1.45;color:#D8D4CE}
+.story-logo li b{display:block;margin-bottom:2px;font-family:var(--display);font-weight:800;font-size:22px;line-height:1;text-transform:uppercase;color:var(--white)}
+.sl-l{width:30px;height:30px;border-radius:50%;background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:17px}
+@media (max-width:640px){.story-logo{grid-template-columns:1fr;padding:20px}.sl-fig{width:min(240px,80%);justify-self:center}}
 .about-facts{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:8px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2)}
 .about-facts div{display:flex;flex-direction:column}
 .about-facts small{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A9C7B2}
@@ -1195,11 +1200,18 @@ a.press-thumb{cursor:pointer}
       function toP(x){ return String(x||'').split(/\n\s*\n/).map(function(t){return t.trim();}).filter(Boolean)
         .map(function(t){ return '<p>'+esc(t).replace(/\n/g,'<br>')+'</p>'; }).join(''); }
       var photoHtml = a.photo ? '<figure class="about-photo"><img src="'+esc(a.photo)+'" alt="'+esc(a.photoCaption||'Foto storica dei Mystere')+'" loading="lazy">'+(a.photoCaption?'<figcaption>'+esc(a.photoCaption)+'</figcaption>':'')+'</figure>' : '';
-      var LOGO_CARD = '<figure class="story-logo"><img src="img/logo-border.png" alt="Logo dei Mystere Mules" loading="lazy">'+
-        '<figcaption><span class="sl-k">Il logo</span><ul>'+
-        '<li><b>Il mulo</b>I “muli”: così a Trieste si chiamano, con affetto, i ragazzi.</li>'+
-        '<li><b>L’alabarda</b>Il simbolo di Trieste, sopra la testa del mulo.</li>'+
-        '<li><b>Il rosso</b>Il colore che unisce Lugo e Trieste.</li></ul></figcaption></figure>';
+      var LOGO_PTS = [['A',50,60.5,-6],['B',50,78,-6],['C',50,35,106],['D',87,63,106]];
+      var LOGO_TXT = [
+        ['A','L’ugola','All’interno della gola dell’asino si nasconde un segreto: l’ugola ha la forma di uno zoccolo d’asino, omaggio al secondary logo, e al tempo stesso disegna una “M”, la prima delle due iniziali nascoste.'],
+        ['B','Il collo','Il collo forma la seconda “M”: ecco le iniziali nascoste di MYSTERE MULES.'],
+        ['C','Il muso','Nelle grinze del muso arricciato è nascosta un’alabarda, simbolo di Trieste, omaggio alla città natale dei padri fondatori dei Mules, da cui viene anche il nome della squadra (muli = ragazzi).'],
+        ['D','Il pallone','Oltre ai colori sociali nero e verde, il logo si presenta su fondo rosso, omaggio alle città di Lugo e Trieste: il simbolo di un viaggio legato al basket, che ha portato la squadra dalle origini a oggi.']];
+      var LOGO_CARD = '<figure class="story-logo"><div class="sl-fig"><img src="img/logo-border.png" alt="Logo dei Mystere Mules" loading="lazy">'+
+        LOGO_PTS.map(function(q){ var a=Math.min(q[1],q[3]), w=Math.abs(q[3]-q[1]);
+          return '<span class="sl-ln" style="left:'+a+'%;top:'+q[2]+'%;width:'+w+'%" aria-hidden="true"></span><span class="sl-dot" style="left:'+q[1]+'%;top:'+q[2]+'%" aria-hidden="true"></span><span class="sl-pt" style="left:'+q[3]+'%;top:'+q[2]+'%" aria-hidden="true">'+q[0]+'</span>'; }).join('')+'</div>'+
+        '<figcaption><span class="sl-k">Il nuovo logo, da vicino</span><ul>'+
+        LOGO_TXT.map(function(q){ return '<li><span class="sl-l" aria-hidden="true">'+q[0]+'</span><div><b>'+q[1]+'</b>'+q[2]+'</div></li>'; }).join('')+
+        '</ul></figcaption></figure>';
       var usedPhoto = false;
       function storyHtml(x){ return String(x||'').split(/\n\s*\n/).map(function(t){return t.trim();}).filter(Boolean).map(function(t){
           if (t==='[[foto]]') { usedPhoto = true; return photoHtml; }
