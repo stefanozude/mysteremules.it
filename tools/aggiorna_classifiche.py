@@ -23,10 +23,16 @@ def parse(page):
     for tr in re.findall(r'<tr>(.*?)</tr>', body, re.S):
         cells = [re.sub(r'<[^>]+>', '', c).strip() for c in re.findall(r'<td[^>]*>(.*?)</td>', tr, re.S)]
         cells = [html.unescape(c) for c in cells if c != '']
-        if len(cells) < 6: continue
-        team, nums = cells[-6], cells[-5:]
-        if not all(n.lstrip('-').isdigit() for n in nums): continue
-        pt, v, s, pf, ps = map(int, nums)
+        # formato nuovo (nov 2026): team, Pt, "G/V/P", "F/S"
+        if len(cells) >= 4 and re.fullmatch(r'\d+/\d+/\d+', cells[-2]) and re.fullmatch(r'\d+/\d+', cells[-1]) and cells[-3].isdigit():
+            team, pt = cells[-4], int(cells[-3])
+            _, v, s = map(int, cells[-2].split('/'))
+            pf, ps = map(int, cells[-1].split('/'))
+        else:  # formato vecchio: team, Pt, V, S, PF, PS
+            if len(cells) < 6: continue
+            team, nums = cells[-6], cells[-5:]
+            if not all(n.lstrip('-').isdigit() for n in nums): continue
+            pt, v, s, pf, ps = map(int, nums)
         rows.append({'team': ' '.join(team.split()).upper(), 'pt': pt, 'v': v, 's': s, 'pf': pf, 'ps': ps})
     if not rows: raise ValueError('nessuna riga letta')
     return rows
